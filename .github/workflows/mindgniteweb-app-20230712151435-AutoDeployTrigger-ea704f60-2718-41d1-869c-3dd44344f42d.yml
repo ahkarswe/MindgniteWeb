@@ -1,0 +1,42 @@
+name: Trigger auto deployment for mindgniteweb-app-20230712151435
+
+# When this action will be executed
+on:
+  # Automatically trigger it when detected changes in repo
+  push:
+    branches: 
+      [ master ]
+    paths:
+    - '**'
+    - '.github/workflows/mindgniteweb-app-20230712151435-AutoDeployTrigger-ea704f60-2718-41d1-869c-3dd44344f42d.yml'
+
+  # Allow mannually trigger 
+  workflow_dispatch:
+      
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.MINDGNITEWEBAPP20230712151435_AZURE_CREDENTIALS }}
+
+      - name: Build and push container image to registry
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          appSourcePath: ${{ github.workspace }} 
+          registryUrl: mindgniteweb20230712151826.azurecr.io
+          registryUsername: ${{ secrets.MINDGNITEWEBAPP20230712151435_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.MINDGNITEWEBAPP20230712151435_REGISTRY_PASSWORD }}
+          containerAppName: mindgniteweb-app-20230712151435
+          resourceGroup: aksrg
+          imageToBuild: mindgniteweb20230712151826.azurecr.io/mindgniteweb-app-20230712151435:${{ github.sha }}
+          
+
+     
+
