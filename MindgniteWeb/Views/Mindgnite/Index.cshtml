@@ -1,0 +1,52 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model DogViewModel
+@*@{
+	ViewData["Title"] = "Mindgnite";
+}*@
+<h1 class="text-center">welcome to Mindgnite Website</h1>
+
+
+
+<p text-center>The time is @DateTime.Now</p>
+<hr />
+
+<div class="row">
+	<div class="col-6">
+		<div class=card>
+			<div class=" card-header">
+				<h5>Create a new dog</h5>
+			</div>
+			<div class=" card-body">
+				<form asp-controller="Mindgnite" asp-action="CreateDog" method="post">
+					<div>
+						<label class="form-label">Dog</label>
+						<input asp-for="Name" type="text" class="form-control" />
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Age</label>
+						<input asp-for=Age type="number" class="form-control" />
+					</div>
+					<div class="text-center">
+						<label class="form-label"></label>
+						<button type="submit" class="btn btn-danger">Save</button>
+					</div>
+				</form>
+			</div>
+			<div class="card-footer">
+				<a href="https://google.com">more</a>
+			</div>
+
+
+
+		</div>
+
+	</div>
+</div>
+<h2>My dog name is a @Model.Name says hello to him.</h2>
+<h2>the dog age is @Model.Age</h2>
+
+
+
+
