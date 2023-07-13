@@ -1,0 +1,85 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model LearnViewModel
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Learning</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=" device-width"", initial-scale="1" />
+</head>
+<body>
+	<h1 class="text-center">Welcome to Learning Page</h1>
+
+	
+		<div class="card col-12 bg-info bg-opacity-25">
+			<div class="card-header">
+
+				<h5>How I learn</h5>
+			</div>
+			<div class="card-body">
+				<table class="table text-success" border="1">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Name</th>
+							<th>Channel</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th>1</th>
+							<td scope="col">English</td>
+							<td>BBC Website</td>
+							<td>No remark</td>
+						</tr>
+						<tr>
+							<th>2</th>
+							<td>Programme</td>
+							<td>learn</td>
+							<td>Learn </td>
+						</tr>
+					</tbody>
+
+				</table>
+			</div>
+		</div>
+	
+	<div class=" mt-2">
+		<div class="card col-6">
+			<div class="card-header">
+				<h5>How you larn!!</h5>
+			</div>
+			<div class="card-body">
+				<form asp-controller="Mindgnite" asp-action="HtLearn" method="post">
+					<div class=" mb-2">
+						<label name="text">Enter Name what you learn:</label>
+						<input type="text" asp-for="Name" class="form-control" id="text" required placeholder="English" />
+					</div>
+					<div class="mb-2">
+						<label name="channel">Which Channel Do You use:</label>
+						<input type="text" asp-for="Channel" class="form-control" id=" channel" required placeholder="Youtube" />
+					</div>
+					<span>
+						<button class="btn btn-secondary">Save</button>
+					</span>
+					<span>
+						<button class="btn btn-danger">Cancle</button>
+					</span>
+				</form>
+
+			</div>
+			<div class="card-footer">
+				 
+			</div>
+		</div>
+
+	</div>
+	
+</body>
+</html>
