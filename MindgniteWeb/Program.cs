@@ -1,8 +1,11 @@
+using Microsoft.EntityFrameworkCore;
+using MindgniteWeb.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddDbContext<MVCDBContext>(options => options.UseSqlServer(""));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
